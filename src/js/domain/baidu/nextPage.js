@@ -1,11 +1,10 @@
 import API from	'../../API';
-console.log(API)
+
 async function nextPage(){
 	let tab = await API.getCurrentWindow();
-	let tabId = tab[0].id;
-	let win = API.getCScriptWindow({tabId:tabId});
-	console.log(win);
-	$('#page .n').trigger('click');
+	let tabId = tab[0].id;	
+	chrome.tabs.sendMessage(tabId, {method: "doEval",string:`$('#page .n:last-child')[0].click();`}, function(data) {});
+
 }
 
 
