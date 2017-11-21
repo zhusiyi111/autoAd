@@ -1,0 +1,51 @@
+{
+  "name": "autoAd",
+  "version": "0.0.1",
+  "manifest_version": 2,
+
+  // 简单描述
+  "description": "autoAd",
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png"
+  },
+
+  // 浏览器小图表部分
+  "browser_action": {
+    "default_title": "autoAd",
+    "default_icon": "icon.png",
+    "default_popup": "html/pop.html"
+  },
+  "background": { 
+    "scripts": [
+      "static/jquery.min.js"
+    ] 
+  },
+  "content_scripts": [
+   
+  ],
+  "web_accessible_resources" : [
+    "js/*",
+    "js/*/*.js"
+  ],
+  // // 引入一个脚本
+  // "content_scripts": [
+  //   {
+  //     "js": ["script/test.js"],
+  //     // 在什么情况下使用该脚本
+  //     "matches": [
+  //       "http://*/*",
+  //       "https://*/*"
+  //     ],
+  //     // 什么情况下运行【文档加载开始】
+  //     "run_at": "document_start"
+  //   }
+  // ],
+  // 应用协议页面
+  "permissions": [
+    "http://*/*",
+    "https://*/*",
+    "tabs",
+    "storage"
+  ]
+}
