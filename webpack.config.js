@@ -2,6 +2,12 @@ const path = require('path');
 const glob = require('glob');
 
 
+const insertJs = glob.sync('./src/js/**/*.js');
+
+console.log(insertJs);
+var moduleEntry = {
+
+}
 
 module.exports = {
     // entry: {demo: "./src/page/demoPage/index.js"},    //打包入口

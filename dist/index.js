@@ -71,8 +71,8 @@
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__getCurrentWindow__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getUrl__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__getCScriptWindow__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__delay__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__simulateEvent__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__delay__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__simulateEvent__ = __webpack_require__(7);
 
 
 
@@ -113,9 +113,9 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__nextPage__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__prePage__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__clickAd__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__nextPage__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__prePage__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__clickAd__ = __webpack_require__(12);
 
 
 
@@ -133,7 +133,7 @@
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__API__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__strategy__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__strategy__ = __webpack_require__(8);
 
 
 
@@ -193,103 +193,6 @@ $('.J_clickAd').click(function(){
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__nextPage__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__prePage__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__clickAd__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__clickAd___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__clickAd__);
-
-
-
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-	nextPage:__WEBPACK_IMPORTED_MODULE_0__nextPage__["a" /* default */],
-	prePage:__WEBPACK_IMPORTED_MODULE_1__prePage__["a" /* default */],
-	clickAd:__WEBPACK_IMPORTED_MODULE_2__clickAd__["default"]
-});
-
-/***/ }),
-/* 7 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__domain_baidu_index_js__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__API_index_js__ = __webpack_require__(0);
-
-
-
-
-async function nextPage(){
-	let url = await __WEBPACK_IMPORTED_MODULE_1__API_index_js__["a" /* default */].getUrl();
-	if(/www\.baidu\.com/.test(url)){
-		__WEBPACK_IMPORTED_MODULE_0__domain_baidu_index_js__["a" /* default */].nextPage();
-	}
-} 
-
-/* harmony default export */ __webpack_exports__["a"] = (nextPage);
-
-/***/ }),
-/* 8 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__API__ = __webpack_require__(0);
-
-
-async function nextPage(){
-	let tab = await __WEBPACK_IMPORTED_MODULE_0__API__["a" /* default */].getCurrentWindow();
-	let tabId = tab[0].id;	
-	chrome.tabs.sendMessage(tabId, {method: "doEval",string:`$('#page .n:last-child')[0].click();`}, function(data) {});
-
-}
-
-
-/* harmony default export */ __webpack_exports__["a"] = (nextPage);
-
-/***/ }),
-/* 9 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__API__ = __webpack_require__(0);
-
-
-async function prePage(){
-	let tab = await __WEBPACK_IMPORTED_MODULE_0__API__["a" /* default */].getCurrentWindow();
-	let tabId = tab[0].id;
-	console.log(tabId)
-	chrome.tabs.sendMessage(tabId, {method: "doEval",string:`$('#page .n').filter(function(){return $(this).text().indexOf('上一页')!==-1})[0].click();`}, function(data) {});
-		
-}
-
-
-/* harmony default export */ __webpack_exports__["a"] = (prePage);
-
-/***/ }),
-/* 10 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__domain_baidu_index_js__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__API_index_js__ = __webpack_require__(0);
-
-
-
-
-async function prePage(){
-	let url = await __WEBPACK_IMPORTED_MODULE_1__API_index_js__["a" /* default */].getUrl();
-	debugger;
-	if(/www\.baidu\.com/.test(url)){
-		__WEBPACK_IMPORTED_MODULE_0__domain_baidu_index_js__["a" /* default */].prePage();
-	}
-} 
-
-/* harmony default export */ __webpack_exports__["a"] = (prePage);
-
-/***/ }),
-/* 11 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 
 
 /* harmony default export */ __webpack_exports__["a"] = (function(delayTime=0){
@@ -301,7 +204,7 @@ async function prePage(){
 });
 
 /***/ }),
-/* 12 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -322,14 +225,83 @@ function simulateMousedown(node) {
 });
 
 /***/ }),
-/* 13 */
-/***/ (function(module, __webpack_exports__) {
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-throw new Error("Module parse failed: The keyword 'await' is reserved (4:11)\nYou may need an appropriate loader to handle this file type.\n| \r\n| export default function(param={title:'',link:''}){\r\n| \tlet url = await API.getUrl();\r\n| \tif(/www\\.baidu\\.com/.test(url)){\r\n| \t\tBaidu.clickAd(param);\r");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__nextPage__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__prePage__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__clickAd__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__clickAd___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__clickAd__);
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+	nextPage:__WEBPACK_IMPORTED_MODULE_0__nextPage__["a" /* default */],
+	prePage:__WEBPACK_IMPORTED_MODULE_1__prePage__["a" /* default */],
+	clickAd:__WEBPACK_IMPORTED_MODULE_2__clickAd__["default"]
+});
 
 /***/ }),
-/* 14 */
+/* 9 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__domain_baidu_index_js__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__API_index_js__ = __webpack_require__(0);
+
+
+
+
+async function nextPage(){
+	let url = await __WEBPACK_IMPORTED_MODULE_1__API_index_js__["a" /* default */].getUrl();
+	if(/www\.baidu\.com/.test(url)){
+		__WEBPACK_IMPORTED_MODULE_0__domain_baidu_index_js__["a" /* default */].nextPage();
+	}
+} 
+
+/* harmony default export */ __webpack_exports__["a"] = (nextPage);
+
+/***/ }),
+/* 10 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__API__ = __webpack_require__(0);
+
+
+async function nextPage(){
+	let tab = await __WEBPACK_IMPORTED_MODULE_0__API__["a" /* default */].getCurrentWindow();
+	let tabId = tab[0].id;	
+	chrome.tabs.sendMessage(tabId, {method: "doEval",string:`$('#page .n:last-child')[0].click();`}, function(data) {});
+
+}
+
+
+/* harmony default export */ __webpack_exports__["a"] = (nextPage);
+
+/***/ }),
+/* 11 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__API__ = __webpack_require__(0);
+
+
+async function prePage(){
+	let tab = await __WEBPACK_IMPORTED_MODULE_0__API__["a" /* default */].getCurrentWindow();
+	let tabId = tab[0].id;
+	console.log(tabId)
+	chrome.tabs.sendMessage(tabId, {method: "doEval",string:`$('#page .n').filter(function(){return $(this).text().indexOf('上一页')!==-1})[0].click();`}, function(data) {});
+		
+}
+
+
+/* harmony default export */ __webpack_exports__["a"] = (prePage);
+
+/***/ }),
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -351,6 +323,33 @@ async function clickAd(param){
 
 /* harmony default export */ __webpack_exports__["a"] = (clickAd);
 
+
+/***/ }),
+/* 13 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__domain_baidu_index_js__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__API_index_js__ = __webpack_require__(0);
+
+
+
+
+async function prePage(){
+	let url = await __WEBPACK_IMPORTED_MODULE_1__API_index_js__["a" /* default */].getUrl();
+	debugger;
+	if(/www\.baidu\.com/.test(url)){
+		__WEBPACK_IMPORTED_MODULE_0__domain_baidu_index_js__["a" /* default */].prePage();
+	}
+} 
+
+/* harmony default export */ __webpack_exports__["a"] = (prePage);
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports) {
+
+throw new Error("Module parse failed: The keyword 'await' is reserved (4:11)\nYou may need an appropriate loader to handle this file type.\n| \r\n| export default function(param={title:'',link:''}){\r\n| \tlet url = await API.getUrl();\r\n| \tif(/www\\.baidu\\.com/.test(url)){\r\n| \t\tBaidu.clickAd(param);\r");
 
 /***/ })
 /******/ ]);
