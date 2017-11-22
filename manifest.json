@@ -18,20 +18,19 @@
   },
   "background": { 
     "scripts": [
-      "static/jquery.min.js"
+      "static/jquery.min.js",
+      "dist/js/background.js"
     ] 
   },
   // 引入一个脚本
   "content_scripts": [
     {
-      "js": ["static/jquery.min.js","dist/js/test.js"],
+      "js": ["static/jquery.min.js","dist/js/baiduInsert.js"],
       // 在什么情况下使用该脚本
       "matches": [
-        "http://*/*",
-        "https://*/*"
-      ],
-      // 什么情况下运行【文档加载开始】
-      "run_at": "document_start"
+        "http://www.baidu.com/*",
+        "https://www.baidu.com/*"
+      ]
     }
   ],
   "web_accessible_resources" : [

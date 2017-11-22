@@ -4,17 +4,27 @@ const glob = require('glob');
 
 const insertJs = glob.sync('./src/js/**/*.js');
 
-console.log(insertJs);
-var moduleEntry = {
+let entryObj = {};
 
-}
+// 加入内容脚本
+insertJs.filter((v)=>{
+    let matched = v.match(/[^\/]*Insert\.js$/);
+    if(matched!==null){
+        let name = matched[0].replace('.js','');
+        entryObj[name] = v;
+    }
+})
+
+entryObj['index'] = './src/js/engine/index.js'
+entryObj['background'] = './src/js/background.js'
+
+console.log(entryObj)
 
 module.exports = {
-    // entry: {demo: "./src/page/demoPage/index.js"},    //打包入口
-    entry: './src/js/engine/index.js',
+    entry: entryObj,    //打包入口
     output: {           //打包输出
-        path: path.resolve(__dirname, 'dist'),
-        filename: "index.js"
+        path: path.resolve(__dirname, 'dist/js'),
+        filename: "[name].js"
     },
     module: {       //模块配置
         rules: [

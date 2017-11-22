@@ -1,24 +1,27 @@
 
-import API from '../API';
-import strategy from '../strategy'
+import {getUrl} from '../API';
+import {nextPage,prePage,clickAd} from '../strategy'
 
 $('.J_getUrl').click(async function(){
-	let a = await API.getUrl();
+	let a = await getUrl();
 
 })
 
 $('.J_nextPage').click(async function(){
-	strategy.nextPage();
+	nextPage();
 })
 
 $('.J_prePage').click(function(){
-	strategy.prePage();
+	prePage();
 })
 
-$('.J_clickAd').click(function(){
-	var link = $('.J_toUrl').val();
-	strategy.clickAd({
-		title:'JS中手动触发事件的方法_bdstjk_新浪博客',
-		link:'blog.sina.com.cn/s/blo... '
+$('.J_clickAd').click(async function(){
+	var link = $('.J_link').val(),
+		title = $('.J_title').val();
+	var result = await clickAd({
+		title:title,
+		link:link
 	})
+	console.log(result);
 })
+
